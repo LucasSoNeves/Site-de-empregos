@@ -1,14 +1,14 @@
+from django.contrib import auth, messages
+from django.contrib.auth.models import User
+from django.contrib.messages import constants
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from django.contrib.auth.models import User
-from django.contrib import messages
-from django.contrib.messages import constants
-from django.contrib import auth
+
 # Create your views here.
 
 def cadastro(request):
     if request.method == "GET":
-        if request.user.id_althenticated:
+        if request.user.is_authenticated:
             return redirect('/home/')
         return render(request, 'cadastro.html')
     elif request.method == "POST":
